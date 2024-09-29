@@ -8,7 +8,7 @@ Soy **Alejandro Paniagua Rodriguez** y hice al pokemon Electrode.
 
 ##  🗄 Tabla de Contenido
 
-- [Video](video_camera-video)
+- [Video](#video_camera-video)
 - [Ejecución WPF](#%EF%B8%8F-ejecución-wpf)
 - [Ejecución UWP](#%EF%B8%8F-ejecución-uwp)
 - [Contacto](#-contacto)
