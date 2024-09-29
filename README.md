@@ -33,7 +33,7 @@ Aquí tienes un [video](https://youtu.be/w7AGnbyIQUc) haciendote un tour por la 
 - Descargamos el archivo **pokemonUWP.appinstaller**.
 - Nos saldra una ventana donde nos presentá la aplicación y le damos a *instalar*.
 
-¡Esta opción funciona si tienes permisos de desarrolador, puedes porbar la WPF que es igual que esta, simplemente cambia un poco el lenguaje, pero las dos hacen exactamente lo mismo!
+¡Esta opción funciona si tienes permisos de desarrolador, puedes probar la WPF que es igual que esta, simplemente cambia un poco el lenguaje, pero las dos hacen exactamente lo mismo!
 
 ## ☎ Contacto
 
