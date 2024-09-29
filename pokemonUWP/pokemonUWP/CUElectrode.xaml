@@ -1,0 +1,278 @@
+﻿<UserControl
+    x:Class="pokemonUWP.CUElectrode"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:pokemonUWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="500"
+    d:DesignWidth="500">
+    <UserControl.Resources>
+        <Storyboard x:Name="flotar">
+            <DoubleAnimation Duration="00:00:00.8000000" Storyboard.TargetName="pokemon" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)" To="12.502" AutoReverse="True" RepeatBehavior="Forever"/>
+        </Storyboard>
+        <Storyboard x:Key="morir">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="mitadOjoIzq">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="95.353"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="path3">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="77.122"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="revivir">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="mitadOjoIzq">
+                <EasingDoubleKeyFrame KeyTime="0" Value="95.353"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="179.722"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="path3">
+                <EasingDoubleKeyFrame KeyTime="0" Value="77.122"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.735"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="contento" AutoReverse="True" RepeatBehavior="Forever">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="cejaIzquierda">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="-9.338"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="cejaDerecha">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="-8.004"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="atacar" AutoReverse="False" RepeatBehavior="1x">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="ataque" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00.1000000" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.2000000" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.3000000" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.4000000" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+
+    <Grid RenderTransformOrigin="5,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="33*"/>
+            <ColumnDefinition Width="425*"/>
+            <ColumnDefinition Width="34*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26*"/>
+            <RowDefinition Height="26*"/>
+            <RowDefinition Height="377*"/>
+            <RowDefinition Height="40*"/>
+        </Grid.RowDefinitions>
+        <Image Grid.ColumnSpan="3" HorizontalAlignment="Center" Grid.RowSpan="4" VerticalAlignment="Center" Stretch="UniformToFill" Source="pokemon-pixel-art-wallpaper-preview.jpg"/>
+        <ProgressBar x:Name="barraVida" Grid.Column="1" Margin="5,0,5,0" Value="50" Height="20" Foreground="#FF06B025"/>
+        <Image x:Name="corazonVida" Margin="6,4,4,4" Source="me-gusta.png"/>
+        <ProgressBar x:Name="barraEscudo" Grid.Column="1" Margin="5,0,5,0" Value="101" Grid.Row="1" Foreground="#FFE4C920" Height="22"/>
+        <Image x:Name="pocion" Grid.Column="2" Margin="2,5,2,7" Grid.RowSpan="2" Source="pocion.png" PointerReleased="pocion_MouseUp"/>
+        <Image x:Name="escudo" Margin="4,1,2,2" Grid.Row="1" Source="escudo (1).png"/>
+        <Image x:Name="atacar" Margin="2.331,4.997,1.665,5.998" Grid.Row="3" Source="espadas.png" PointerReleased="atacar_MouseUp" Visibility="Visible" />
+        <Image x:Name="pocionEscudo" Grid.Column="2" HorizontalAlignment="Center" Margin="0.333,0.166,0,2.166" Grid.Row="3" VerticalAlignment="Center" Source="pocionEscudo.png" PointerReleased="pocionEscudo_MouseUp"/>
+        <TextBlock Grid.Column="1" Margin="10.408,6.401,7.408,6.401" Grid.Row="3" TextWrapping="Wrap" Text="Electrode" FontFamily="Kristen ITC" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Width="407.184" TextAlignment="Center"/>
+        <Canvas x:Name="pokemon" Grid.Column="1" HorizontalAlignment="Center" Height="377" Grid.Row="2" VerticalAlignment="Center" Width="425" RenderTransformOrigin="0.5,0.5" PointerReleased="pokemon_MouseUp">
+            <Canvas.RenderTransform>
+                <CompositeTransform/>
+            </Canvas.RenderTransform>
+            <Image x:Name="ataque" Height="358.403" Source="ataque.png" RenderTransformOrigin="0.5,0.5" Canvas.Left="4.955" Canvas.Top="-1.446" Width="387.42" Opacity="0">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-360.411"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <Ellipse x:Name="Cuerpo" Height="267" Canvas.Left="78" Stroke="Black" Canvas.Top="49.875" Width="273" RenderTransformOrigin="0.5,0.5">
+                <Ellipse.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Ellipse.RenderTransform>
+                <Ellipse.Fill>
+                    <LinearGradientBrush EndPoint="0.532,0.007" StartPoint="0.908,-0.117">
+                        <GradientStop Color="#FFBDBABA" Offset="0.504"/>
+                        <GradientStop Color="White" Offset="0.905"/>
+                    </LinearGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+            <Path x:Name="mitadCuerpo" Data="M0.62202996,0.5 L2.1449993,1.9124451 C34.45946,31.15065 84.645381,49.930374 141,49.930374 192.78533,49.930374 239.36173,34.072556 271.6485,8.813736 L272.47122,8.1544647 272.4556,9.3631592 C270.59375,81.23053 210.43714,138.93037 136.5,138.93037 61.389277,138.93037 0.50000244,79.384247 0.5,5.9303741 0.50000244,4.7826538 0.51486796,3.6383362 0.54441637,2.4975891 z" Fill="#FFB37E88" Height="139.43" Canvas.Left="77" Stretch="Fill" Stroke="Black" Canvas.Top="183.57" Width="272.971" RenderTransformOrigin="0.5,0.5">
+                <Path.Resources>
+                    <Storyboard x:Name="dolor" x:Key="dolorKey">
+                        <ColorAnimation BeginTime="00:00:00" Storyboard.TargetName="mitadCuerpo"
+                            Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" From="#FFB37E88"
+                            To="#FFCF3030" Duration="0:0:1" AutoReverse="True" >
+                            <ColorAnimation.EasingFunction>
+                                <BounceEase EasingMode="EaseInOut"/>
+                            </ColorAnimation.EasingFunction>
+                        </ColorAnimation>
+                    </Storyboard>
+                </Path.Resources>
+                <Path.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Path.RenderTransform>
+            </Path>
+            <Canvas x:Name="ojoIzquierdo" Height="21.694" Canvas.Left="148" Canvas.Top="157.25" Width="6.5" RenderTransformOrigin="0.5,0.5">
+                <Canvas.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Canvas.RenderTransform>
+                <Path Data="M139,139 L134,177.57" Fill="#FFB37E88" Height="21.32" Stretch="Fill" Stroke="Black" Width="4.75"/>
+                <Path x:Name="mitadOjoIzq" Data="M139,139 L134,177.57" Fill="#FFB37E88" Height="21.32" Canvas.Left="0.875" Stretch="Fill" Stroke="Black" Canvas.Top="0.188" Width="4.75" RenderTransformOrigin="0.5,0.5">
+                    <Path.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Path.RenderTransform>
+                </Path>
+                <Path x:Name="path1" Data="M139,139 L134,177.57" Fill="#FFB37E88" Height="21.32" Canvas.Left="1.75" Stretch="Fill" Stroke="Black" Canvas.Top="0.374" Width="4.75" RenderTransformOrigin="0.5,0.5">
+                    <Path.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Path.RenderTransform>
+                </Path>
+            </Canvas>
+            <Canvas x:Name="ojoDerecho" Height="21.694" Canvas.Left="252.007" Canvas.Top="160.917" Width="6.5" RenderTransformOrigin="0.5,0.5">
+                <Canvas.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Canvas.RenderTransform>
+                <Path Data="M139,139 L134,177.57" Fill="#FFB37E88" Height="21.32" Stretch="Fill" Stroke="Black" Width="4.75"/>
+                <Path x:Name="path3" Data="M139,139 L134,177.57" Fill="#FFB37E88" Height="21.32" Canvas.Left="0.876" Stretch="Fill" Stroke="Black" Canvas.Top="0.188" Width="4.75" RenderTransformOrigin="0.5,0.5">
+                    <Path.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Path.RenderTransform>
+                </Path>
+                <Path x:Name="path" Data="M139,139 L134,177.57" Fill="#FFB37E88" Height="21.32" Canvas.Left="1.75" Stretch="Fill" Stroke="Black" Canvas.Top="0.374" Width="4.75" RenderTransformOrigin="0.5,0.5">
+                    <Path.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Path.RenderTransform>
+                </Path>
+            </Canvas>
+            <Canvas x:Name="cejaIzquierda" Height="36.935" Canvas.Left="122.999" Canvas.Top="116.503" Width="60.583" RenderTransformOrigin="0.5,0.5">
+                <Canvas.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Canvas.RenderTransform>
+                <Path Data="M122.66667,144 L153.625,117.33333" Fill="#FFB37E88" Height="27.667" Canvas.Left="0.249" Stretch="Fill" Stroke="Black" Canvas.Top="0.332" Width="31.958"/>
+                <Path Data="M153.625,117.333 L182.33333,152.438" Fill="#FFF4F4F5" Height="36.105" Canvas.Left="30.626" Stretch="Fill" Stroke="Black" Canvas.Top="0.83" Width="29.708"/>
+                <Path Data="M153.625,117.333 L182.33333,152.438" Fill="#FFF4F4F5" Height="36.105" Canvas.Left="30.875" Stretch="Fill" Stroke="Black" Canvas.Top="0.664" Width="29.708"/>
+                <Path Data="M122.66667,144 L153.625,117.33333" Fill="#FFB37E88" Height="27.667" Stretch="Fill" Stroke="Black" Width="31.958"/>
+            </Canvas>
+            <Canvas x:Name="arruga" Height="19.167" Canvas.Left="223.956" Canvas.Top="138.082" Width="2.041" RenderTransformOrigin="0.5,0.5">
+                <Canvas.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Canvas.RenderTransform>
+                <Path Data="M215.83333,144.33333 L215.83333,157.66667" Fill="White" Height="14.334" Canvas.Left="0.002" Stretch="Fill" Stroke="Black" Width="1"/>
+                <Path Data="M216.16667,157.5 C216.16667,159.59268 216.21051,160.6918 216.83333,162.5" Fill="White" Height="6" Stretch="Fill" Stroke="Black" Canvas.Top="13.167" Width="1.666"/>
+                <Path Data="M215.83333,144.33333 L215.83333,157.66667" Fill="White" Height="14.334" Canvas.Left="0.377" Stretch="Fill" Stroke="Black" Width="1"/>
+                <Path Data="M216.16667,157.5 C216.16667,159.59268 216.21051,160.6918 216.83333,162.5" Fill="White" Height="6" Canvas.Left="0.375" Stretch="Fill" Stroke="Black" Canvas.Top="13.167" Width="1.666"/>
+            </Canvas>
+            <Canvas x:Name="cejaDerecha" Height="36.167" Canvas.Left="227.625" Canvas.Top="116.833" Width="89.875" RenderTransformOrigin="0.5,0.5">
+                <Canvas.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Canvas.RenderTransform>
+                <Path Data="M228,152 L269,117.333" Fill="#FFF4F4F5" Height="35.667" Canvas.Left="0.375" Stretch="Fill" Stroke="Black" Canvas.Top="0.5" Width="42"/>
+                <Path Data="M270,117.333 L320,140.5" Fill="#FFF4F4F5" Height="24.167" Canvas.Left="38.75" Stretch="Fill" Stroke="Black" Canvas.Top="3.375" Width="51" RenderTransformOrigin="0.5,0.5">
+                    <Path.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="7.242"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Path.RenderTransform>
+                </Path>
+                <Path Data="M228,152 L269,117.333" Fill="#FFF4F4F5" Height="35.667" Stretch="Fill" Stroke="Black" Width="42"/>
+                <Path Data="M270,117.333 L320,140.5" Fill="#FFF4F4F5" Height="24.167" Canvas.Left="38.875" Stretch="Fill" Stroke="Black" Canvas.Top="3.125" Width="51" RenderTransformOrigin="0.5,0.5">
+                    <Path.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="7.242"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Path.RenderTransform>
+                </Path>
+            </Canvas>
+            <Grid x:Name="gboca" Height="38.406" Canvas.Left="128.167" Canvas.Top="244.502" Width="172.001" RenderTransformOrigin="0.5,0.5">
+                <Grid.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Grid.RenderTransform>
+                <Path Data="M0.5,0.5 L135.46894,0.5 135.46242,0.73601151 C134.53835,17.453278 104.6812,30.875 67.984471,30.875 31.287737,30.875 1.4305933,17.453278 0.5065161,0.73601151 z" Stretch="Fill" Stroke="Black" RenderTransformOrigin="0.5,0.5" Margin="4.666,6.348,8.835,0">
+                    <Path.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="2.649"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Path.RenderTransform>
+                    <Path.Fill>
+                        <LinearGradientBrush EndPoint="1.02,0.292" StartPoint="-0.206,0.175">
+                            <GradientStop Color="Black"/>
+                            <GradientStop Color="White" Offset="0.49"/>
+                        </LinearGradientBrush>
+                    </Path.Fill>
+                </Path>
+                <Path Data="M289.66667,251.33333 C294.11826,250.88817 294.09069,251.02641 298,248.33333" Fill="#FFB37E88" Stretch="Fill" Stroke="Black" Margin="162.668,6.955,0,27.451"/>
+                <Path Data="M133.08333,251.5 C130.65127,250.94486 129.81496,250.60415 127.83333,248.83333" Fill="#FFB37E88" Stretch="Fill" Stroke="Black" Margin="0,0,165.751,34.739"/>
+                <Path Data="M217.16667,295.658 L217,286.33333" Fill="#FFB37E88" Stretch="Fill" Stroke="Black" Margin="88.583,28.081,82.251,0"/>
+                <Path Data="M217.16667,295.658 L217,286.33333" Fill="#FFB37E88" Stretch="Fill" Stroke="Black" Margin="108.458,20.956,62.376,0.875"/>
+            </Grid>
+        </Canvas>
+    </Grid>
+
+</UserControl>
